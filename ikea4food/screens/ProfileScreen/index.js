@@ -8,16 +8,14 @@ import MainHeader from '../../components/MainHeader';
 import BottomNav from '../../components/BottomNav';
 import styles from '../../stylesheets/styles';
 
-export default class HomeScreen extends Component {
+export default class ProfileScreen extends Component {
     render() {
       return (
             <View style={styles.container}>
-                <MainHeader title="MAIN MENU" />
+                <MainHeader title="PROFILE" />
                 <View style={styles.containerReverse}>
-                    <Text style={styles.welcome}>
-                    Welcome to React Native!3
-                    </Text>
-                  <BottomNav navigation={this.props.navigation} />
+
+                  <BottomNav navigation={this.props.navigation}/>
                 </View>
             </View>
       );

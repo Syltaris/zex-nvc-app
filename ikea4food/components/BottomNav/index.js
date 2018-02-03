@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
     View,
     TouchableOpacity,
@@ -9,33 +9,42 @@ import {
 
 import styles, { Colors } from '../../stylesheets/styles';
 
-export default BottomNav = () => {
-    return (
-        <View style={styles.container_bottomNav}>
-            <View style={styles.container_bottomNavButtons}>
-                <Icon
-                name="home"
-                type="entypo"
-                color={Colors.ICON_PRIMARY}/>
+export default class BottomNav extends Component {
+    render() {
+        return (
+            <View style={styles.container_bottomNav}>
+                <TouchableOpacity 
+                style={styles.container_bottomNavButtons}
+                onPress={() => {this.props.navigation.navigate({ routeName: 'HomeScreen' })}}>
+                    <Icon
+                    name="home"
+                    type="entypo"
+                    color={Colors.ICON_PRIMARY}/>
+                </TouchableOpacity>
+                <TouchableOpacity 
+                style={styles.container_bottomNavButtons}
+                onPress={() => {this.props.navigation.goBack()}}>
+                    <Icon
+                    name="home"
+                    type="entypo"
+                    color={Colors.ICON_PRIMARY}/>
+                </TouchableOpacity>
+                <TouchableOpacity 
+                style={styles.container_bottomNavButtons}>
+                    <Icon
+                    name="home"
+                    type="entypo"
+                    color={Colors.ICON_PRIMARY}/>
+                </TouchableOpacity>
+                <TouchableOpacity 
+                style={styles.container_bottomNavButtons}
+                onPress={() => {this.props.navigation.navigate({ routeName: 'ProfileScreen' })}}>
+                    <Icon
+                    name="face-profile"
+                    type="material-community"
+                    color={Colors.ICON_PRIMARY}/>
+                </TouchableOpacity>
             </View>
-            <View style={styles.container_bottomNavButtons}>
-                <Icon
-                name="home"
-                type="entypo"
-                color={Colors.ICON_PRIMARY}/>
-            </View>
-            <View style={styles.container_bottomNavButtons}>
-                <Icon
-                name="home"
-                type="entypo"
-                color={Colors.ICON_PRIMARY}/>
-            </View>
-            <View style={styles.container_bottomNavButtons}>
-                <Icon
-                name="home"
-                type="entypo"
-                color={Colors.ICON_PRIMARY}/>
-            </View>
-        </View>
-    );
+        );
+    }
 }
