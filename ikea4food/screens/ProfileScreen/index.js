@@ -16,6 +16,19 @@ export default class ProfileScreen extends Component {
     constructor() {
         super();
         this.state = {
+            userProfile: {
+                profile: {
+                    name: 'Bacon Pork',
+                    age: '23',
+                    email: 'piggyfarms@vegan.com',
+                    contact_number: '509-232-5319',
+                },
+                address: {
+                    street: '1648 Dane Street',
+                    state: 'Spokane, Washington(WA)',
+                    postal: '99201',
+                }
+            },
             subscriptions : [
                 {
                     key: 1,
@@ -25,17 +38,17 @@ export default class ProfileScreen extends Component {
                 {
                     key: 2,
                     name: 'uhuhuhuhuh',
-                    image_uri: 'https://source.unsplash.com/random/400x200',
+                    image_uri: {uri: 'https://unsplash.com/collections/345760/food/200x100'},
                 },
                 {
                     key: 3,
                     name: 'uhuhuhuhuh',
-                    image_uri: 'https://source.unsplash.com/random/400x200',
+                    image_uri: {uri: 'https://unsplash.com/collections/345760/food/201x100'},
                 },
                 {
                     key: 4,
                     name: 'uhuhuhuhuh',
-                    image_uri: 'https://source.unsplash.com/random/400x200',
+                    image_uri: {uri: 'https://unsplash.com/collections/345760/food/200x101'},
                 }
             ]
         }
@@ -52,7 +65,7 @@ export default class ProfileScreen extends Component {
                         <Card 
                         key={subscribedPackage.key} 
                         image={subscribedPackage.image_uri}
-                        featuredSubtitle="Delicious Poision">
+                        featuredSubtitle={subscribedPackage.name}>
                             <Text>{subscribedPackage.name}</Text>
                         </Card>
                     </View>
@@ -80,23 +93,23 @@ export default class ProfileScreen extends Component {
                 <View style={styles.containerReverse}>
                     <View style={styles.container}>
                         <View style={{flex: 0.15, width: '100%'}}>
-                            <Card >
-                                <Text>Name: </Text>
-                                <Text>Name: </Text>
-                                <Text>Name: </Text>
-                                <Text>Name: </Text>
+                            <Card>
+                                <Text>Name: {this.state.userProfile.profile.name}</Text>
+                                <Text>Age: {this.state.userProfile.profile.age}</Text>
+                                <Text>Email: {this.state.userProfile.profile.email}</Text>
+                                <Text>Contact: {this.state.userProfile.profile.contact_number}</Text>
                             </Card>
                         </View>
                         <View style={{flex: 0.15, width: '100%'}}>
                             <Card >
                                 <Text>Address: </Text>
-                                <Text>Address: </Text>
-                                <Text>Address: </Text>
-                                <Text>Address: </Text>
+                                <Text>{this.state.userProfile.address.street}</Text>
+                                <Text>{this.state.userProfile.address.state}</Text>
+                                <Text>{this.state.userProfile.address.postal}</Text>
                             </Card>                        
                         </View>
                         <View style={{flex: 0.7, width: '100%'}}>
-                            <Card containerStyle={{flex: 1}}>
+                            <Card containerStyle={{flex: 1, padding : 0 }}>
                                 <Text>Subscriptions: </Text>
                                 <FlatList
                                 horizontal
