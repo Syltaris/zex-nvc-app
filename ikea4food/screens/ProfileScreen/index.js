@@ -96,6 +96,7 @@ export default class ProfileScreen extends Component {
                                 <Text>Subscriptions: </Text>
                                 <FlatList
                                 horizontal
+                                showsHorizontalScrollIndicator={false}
                                 data={this.state.subscriptions}
                                 renderItem={this._renderSubscriptionCard} />
                             </Card>

@@ -69,6 +69,7 @@ export default class ProductScreen extends Component {
                 <View style={styles.containerReverse}>
                     <View style={styles.container}>
                         <FlatList
+                        showsVerticalScrollIndicator={false}
                         data={this.state.products}
                         renderItem={this._renderProductCard} />
                     </View>
