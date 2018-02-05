@@ -14,9 +14,11 @@ export default class HomeScreen extends Component {
             <View style={styles.container}>
                 <MainHeader title="MAIN MENU" />
                 <View style={styles.containerReverse}>
+                  <View style={styles.container}>
                     <Text style={styles.welcome}>
                     Welcome to React Native!3
                     </Text>
+                  </View>
                   <BottomNav navigation={this.props.navigation} />
                 </View>
             </View>

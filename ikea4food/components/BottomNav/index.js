@@ -23,10 +23,10 @@ export default class BottomNav extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity 
                 style={styles.container_bottomNavButtons}
-                onPress={() => {this.props.navigation.goBack()}}>
+                onPress={() => {this.props.navigation.navigate('ProductScreen')}}>
                     <Icon
-                    name="home"
-                    type="entypo"
+                    name="package"
+                    type="feather"
                     color={Colors.ICON_PRIMARY}/>
                 </TouchableOpacity>
                 <TouchableOpacity 

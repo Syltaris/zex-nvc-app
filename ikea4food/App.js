@@ -9,6 +9,7 @@ import { DrawerNavigator } from 'react-navigation';
 
 import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import ProductScreen from './screens/ProductScreen';
 
 export default RootNavigator = DrawerNavigator({
   HomeScreen: {
@@ -23,4 +24,10 @@ export default RootNavigator = DrawerNavigator({
       header: null,
     },
   },
+  ProductScreen: {
+    screen: ProductScreen,
+    navigationOptions: {
+      header: null,
+    }
+  }
 })

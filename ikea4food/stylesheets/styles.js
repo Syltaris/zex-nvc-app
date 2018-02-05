@@ -38,14 +38,4 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: Colors.BACKGROUND,
     },
-    welcome: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10,
-    },
-    instructions: {
-      textAlign: 'center',
-      color: Colors.FONT_GREY,
-      marginBottom: 5,
-    },
   });
