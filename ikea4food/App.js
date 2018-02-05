@@ -11,14 +11,14 @@ import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
 
 export default RootNavigator = StackNavigator({
-  ProfileScreen: {
-    screen: ProfileScreen,
+  HomeScreen: {
+    screen: HomeScreen,
     navigationOptions: {
       header: null,
     },
   },
-  HomeScreen: {
-    screen: HomeScreen,
+  ProfileScreen: {
+    screen: ProfileScreen,
     navigationOptions: {
       header: null,
     },

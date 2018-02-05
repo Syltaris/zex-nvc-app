@@ -15,7 +15,7 @@ export default class BottomNav extends Component {
             <View style={styles.container_bottomNav}>
                 <TouchableOpacity 
                 style={styles.container_bottomNavButtons}
-                onPress={() => {this.props.navigation.navigate({ routeName: 'HomeScreen' })}}>
+                onPress={() => {this.props.navigation.navigate('HomeScreen')}}>
                     <Icon
                     name="home"
                     type="entypo"
@@ -38,7 +38,7 @@ export default class BottomNav extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity 
                 style={styles.container_bottomNavButtons}
-                onPress={() => {this.props.navigation.navigate({ routeName: 'ProfileScreen' })}}>
+                onPress={() => {this.props.navigation.navigate('ProfileScreen')}}>
                     <Icon
                     name="face-profile"
                     type="material-community"
