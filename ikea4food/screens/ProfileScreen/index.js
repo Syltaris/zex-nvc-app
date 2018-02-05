@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
   Text,
-  View
+  View,
+  FlatList,
 } from 'react-native';
 import {
     Card
@@ -18,11 +19,23 @@ export default class ProfileScreen extends Component {
             subscriptions : [
                 {
                     key: 1,
-                    name: 'sure',
+                    name: 'sureeee',
+                    image_uri: require('../../res/img/salad1.jpg'),
                 },
                 {
                     key: 2,
-                    name: 'uhuh',
+                    name: 'uhuhuhuhuh',
+                    image_uri: 'https://source.unsplash.com/random/400x200',
+                },
+                {
+                    key: 3,
+                    name: 'uhuhuhuhuh',
+                    image_uri: 'https://source.unsplash.com/random/400x200',
+                },
+                {
+                    key: 4,
+                    name: 'uhuhuhuhuh',
+                    image_uri: 'https://source.unsplash.com/random/400x200',
                 }
             ]
         }
@@ -34,13 +47,31 @@ export default class ProfileScreen extends Component {
         } else {
             return this.state.subscriptions.map((subscribedPackage) => {
                 return (
-                    <Card key={subscribedPackage.key} style={{width: '33%'}}>
-                        <Text>{subscribedPackage.name}</Text>
-                    </Card>
+                    <View 
+                    style={{width: '33%'}}>
+                        <Card 
+                        key={subscribedPackage.key} 
+                        image={subscribedPackage.image_uri}
+                        featuredSubtitle="Delicious Poision">
+                            <Text>{subscribedPackage.name}</Text>
+                        </Card>
+                    </View>
                 );
             });
         }
     }
+
+    _renderSubscriptionCard = ({item, seperators}) => (
+        <View>
+            <Card 
+            key={item.key} 
+            image={item.image_uri}
+            featuredSubtitle="Delicious Poision"
+            containerStyle={{ width: 200 }}>
+                <Text>{item.name}</Text>
+            </Card>
+        </View>
+    );
 
     render() {
       return (
@@ -67,10 +98,11 @@ export default class ProfileScreen extends Component {
                         <View style={{flex: 0.7, width: '100%'}}>
                             <Card containerStyle={{flex: 1}}>
                                 <Text>Subscriptions: </Text>
-                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                                    {this.populateSubscriptionCards()}
-                                </View>
-                            </Card>                        
+                                <FlatList
+                                horizontal
+                                data={this.state.subscriptions}
+                                renderItem={this._renderSubscriptionCard} />
+                            </Card>
                         </View>
                     </View>
                     <BottomNav navigation={this.props.navigation}/>

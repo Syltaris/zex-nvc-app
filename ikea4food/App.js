@@ -23,5 +23,4 @@ export default RootNavigator = StackNavigator({
       header: null,
     },
   },
-
 })
