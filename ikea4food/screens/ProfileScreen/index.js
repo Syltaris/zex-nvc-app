@@ -32,45 +32,27 @@ export default class ProfileScreen extends Component {
             subscriptions : [
                 {
                     key: 1,
-                    name: 'sureeee',
+                    name: 'Perfected Strike',
                     image_uri: require('../../res/img/salad1.jpg'),
+                    description: 'Tasty poison.',
+                    next_arrival_time: 'Sometime like never'
                 },
                 {
                     key: 2,
                     name: 'uhuhuhuhuh',
-                    image_uri: {uri: 'https://unsplash.com/collections/345760/food/200x100'},
+                    image_uri: {uri: 'https://source.unsplash.com/collection/345760/200x100'}, 
                 },
                 {
                     key: 3,
                     name: 'uhuhuhuhuh',
-                    image_uri: {uri: 'https://unsplash.com/collections/345760/food/201x100'},
+                    image_uri: {uri: 'https://source.unsplash.com/collection/345760/201x100'},
                 },
                 {
                     key: 4,
                     name: 'uhuhuhuhuh',
-                    image_uri: {uri: 'https://unsplash.com/collections/345760/food/200x101'},
+                    image_uri: {uri: 'https://source.unsplash.com/collection/345760/200x101'},
                 }
             ]
-        }
-    }
-
-    populateSubscriptionCards() {
-        if (this.state.subscriptions == null) {
-            return <Text>"You have no subscriptions!"</Text>
-        } else {
-            return this.state.subscriptions.map((subscribedPackage) => {
-                return (
-                    <View 
-                    style={{width: '33%'}}>
-                        <Card 
-                        key={subscribedPackage.key} 
-                        image={subscribedPackage.image_uri}
-                        featuredSubtitle={subscribedPackage.name}>
-                            <Text>{subscribedPackage.name}</Text>
-                        </Card>
-                    </View>
-                );
-            });
         }
     }
 
@@ -79,9 +61,10 @@ export default class ProfileScreen extends Component {
             <Card 
             key={item.key} 
             image={item.image_uri}
-            featuredSubtitle="Delicious Poision"
-            containerStyle={{ width: 200 }}>
-                <Text>{item.name}</Text>
+            featuredSubtitle={item.name}
+            containerStyle={{width: 200}}>
+                <Text>{item.description}</Text>
+                <Text>{item.next_arrival_time}</Text>
             </Card>
         </View>
     );
