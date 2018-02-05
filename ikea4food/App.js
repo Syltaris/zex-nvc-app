@@ -5,12 +5,12 @@
  */
 
 import React, { Component } from 'react';
-import { StackNavigator } from 'react-navigation';
+import { DrawerNavigator } from 'react-navigation';
 
 import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
 
-export default RootNavigator = StackNavigator({
+export default RootNavigator = DrawerNavigator({
   HomeScreen: {
     screen: HomeScreen,
     navigationOptions: {
