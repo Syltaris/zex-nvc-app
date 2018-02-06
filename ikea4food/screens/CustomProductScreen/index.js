@@ -5,7 +5,8 @@ import {
 } from 'react-native';
 import {
   Slider,
-  Card
+  Card,
+  Button
 } from 'react-native-elements';
 
 import MainHeader from '../../components/MainHeader';
@@ -72,13 +73,21 @@ export default class CustomProductScreen extends Component {
               navigation={this.props.navigation}/>
               <View style={styles.containerReverse}>
                 <View style={styles.container}>
-                  <View style={{flex: 1, width: '100%'}}>
+                  <View style={styles.container_sliders}>
+                    {this.populateSliders()}
+                  </View>
+                  <View style={{flex: 0.2, width: '100%'}}>
                     <Card>
                       <Text>Nutrients</Text>
                       {this.calculateNutrients()}
                     </Card>
                   </View>
-                  {this.populateSliders()}
+                  <View
+                  style={{flex: 0.1, width: '100%'}}>
+                    <Button
+                    buttonStyle={styles.button_fullWidth}
+                    title="PURCHASE"/>
+                  </View>
                 </View>
                 <BottomNav navigation={this.props.navigation} />
               </View>
