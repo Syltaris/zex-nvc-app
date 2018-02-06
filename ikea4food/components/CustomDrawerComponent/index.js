@@ -7,6 +7,8 @@ import {
     SafeAreaView,
 } from 'react-navigation';
 
+import SettingsScreen from '../../screens/SettingsScreen';
+
 import styles from '../../stylesheets/styles';
 
 export default CustomDrawerContentComponent = (props) => (
@@ -14,7 +16,9 @@ export default CustomDrawerContentComponent = (props) => (
         <SafeAreaView 
         style={styles.container} 
         forceInset={{ top: 'always', horizontal: 'never' }}>
-            <DrawerItems {...props} />
+            <DrawerItems 
+            {...props}
+            items={props.items.filter((item) => item.routeName === 'SettingsScreen')}/>
         </SafeAreaView>
     </ScrollView>
 );
