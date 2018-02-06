@@ -16,7 +16,7 @@ export default MainHeader = (props) => {
         <View style={{width: '100%'}}>
             <Header
             backgroundColor={Colors.PRIMARY}
-            leftComponent={<MenuButton />}
+            leftComponent={<MenuButton navigation={props.navigation}/>}
             centerComponent={{ text: props.title, style: { color: '#fff' } }}
             rightComponent={
                 <TouchableOpacity 
