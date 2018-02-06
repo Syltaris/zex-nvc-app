@@ -30,9 +30,10 @@ export default class BottomNav extends Component {
                     color={Colors.ICON_PRIMARY}/>
                 </TouchableOpacity>
                 <TouchableOpacity 
-                style={styles.container_bottomNavButtons}>
+                style={styles.container_bottomNavButtons}
+                onPress={() => {this.props.navigation.navigate('CustomProductScreen')}}>
                     <Icon
-                    name="home"
+                    name="bowl"
                     type="entypo"
                     color={Colors.ICON_PRIMARY}/>
                 </TouchableOpacity>
