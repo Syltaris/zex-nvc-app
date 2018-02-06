@@ -40,7 +40,7 @@ export default RootNavigator = DrawerNavigator({
       header: null,
     }
   },
-  SettingsScreen: {
+  Settings: {
     screen: SettingsScreen,
     navigationOptions: {
       header: null,

@@ -17,12 +17,15 @@ export default styles = StyleSheet.create({
       alignItems: 'center',
       backgroundColor: Colors.BACKGROUND,
     },
-    container_bottomNav:{
-      flex: 0.10,
-      flexDirection: 'row',
-      width: '100%',
-      backgroundColor: Colors.PRIMARY,
-    },
+      container_drawerItems: {
+        width: '100%',
+      },
+      container_bottomNav:{
+        flex: 0.10,
+        flexDirection: 'row',
+        width: '100%',
+        backgroundColor: Colors.PRIMARY,
+      },
       container_bottomNavButtons: {
         width: '25%',
         flexDirection: 'row',
@@ -38,4 +41,9 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: Colors.BACKGROUND,
     },
+    drawer_top: {
+      width: '100%',
+      height: 150,
+      backgroundColor: Colors.PRIMARY,
+    }
   });
