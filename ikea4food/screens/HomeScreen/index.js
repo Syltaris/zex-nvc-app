@@ -12,7 +12,9 @@ export default class HomeScreen extends Component {
     render() {
       return (
             <View style={styles.container}>
-                <MainHeader title="MAIN MENU" />
+                <MainHeader 
+                title="MAIN MENU"
+                navigation={this.props.navigation} />
                 <View style={styles.containerReverse}>
                   <View style={styles.container}>
                     <Text style={styles.welcome}>

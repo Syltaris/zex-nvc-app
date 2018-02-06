@@ -72,7 +72,9 @@ export default class ProfileScreen extends Component {
     render() {
       return (
             <View style={styles.container}>
-                <MainHeader title="PROFILE" />
+                <MainHeader 
+                title="PROFILE"
+                navigation={this.props.navigation} />
                 <View style={styles.containerReverse}>
                     <View style={styles.container}>
                         <View style={{flex: 0.15, width: '100%'}}>

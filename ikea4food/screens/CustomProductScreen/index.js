@@ -67,7 +67,9 @@ export default class CustomProductScreen extends Component {
   render() {
     return (
           <View style={styles.container}>
-              <MainHeader title="CUSTOMIZED PACKAGE" />
+              <MainHeader 
+              title="CUSTOMIZED PACKAGE" 
+              navigation={this.props.navigation}/>
               <View style={styles.containerReverse}>
                 <View style={styles.container}>
                   <View style={{flex: 1, width: '100%'}}>

@@ -65,7 +65,9 @@ export default class ProductScreen extends Component {
     render() {
       return (
             <View style={styles.container}>
-                <MainHeader title="PRODUCTS" />
+                <MainHeader 
+                title="PRODUCTS"
+                navigation={this.props.navigation} />
                 <View style={styles.containerReverse}>
                     <View style={styles.container}>
                         <FlatList

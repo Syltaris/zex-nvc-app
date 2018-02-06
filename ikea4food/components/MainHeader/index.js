@@ -1,9 +1,11 @@
 import React from 'react';
 import {
-    View
+    View,
+    TouchableOpacity,
 } from 'react-native';
 import {
     Header,
+    Icon
 } from 'react-native-elements';
 
 import MenuButton from '../../components/pressables/MenuButton';
@@ -15,7 +17,15 @@ export default MainHeader = (props) => {
             <Header
             backgroundColor={Colors.PRIMARY}
             leftComponent={<MenuButton />}
-            centerComponent={{ text: props.title, style: { color: '#fff' } }}/>
+            centerComponent={{ text: props.title, style: { color: '#fff' } }}
+            rightComponent={
+                <TouchableOpacity 
+                onPress={() => {props.navigation.navigate('ProfileScreen')}}>
+                    <Icon
+                    name="face-profile"
+                    type="material-community"
+                    color={Colors.ICON_PRIMARY}/>
+                </TouchableOpacity>}/>
         </View>
     );
 }
