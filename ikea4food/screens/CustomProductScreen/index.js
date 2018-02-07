@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
   Text,
-  View
+  View,
+  Modal
 } from 'react-native';
 import {
   Slider,
@@ -11,12 +12,14 @@ import {
 
 import MainHeader from '../../components/MainHeader';
 import BottomNav from '../../components/BottomNav';
+
 import styles from '../../stylesheets/styles';
 
 export default class CustomProductScreen extends Component {
   constructor() {
     super();
     this.state = {
+      showShoppingCart: false,
       product_composition: {
         kale: 0,
         potatoes: 0,
@@ -65,9 +68,29 @@ export default class CustomProductScreen extends Component {
     });
   }
 
+  openShoppingCart = () => {this.setState({showShoppingCart: true})}
+  closeShoppingCart = () => {this.setState({showShoppingCart: false})}
+
   render() {
     return (
           <View style={styles.container}>
+              <Modal
+              transparent
+              visible={this.state.showShoppingCart}
+              animationType={'slide'}
+              onRequestClose={() => this.closeShoppingCart()}>
+                <View style={styles.container_shoppingCart}>
+                  <Card
+                    containerStyle={styles.card_shoppingCart}>
+                    <Text>
+                        Your Shoppping List
+                    </Text>
+                    <Button 
+                    title="dumbass"
+                    onPress={() => this.closeShoppingCart()}/>
+                  </Card>
+                </View>
+              </Modal>
               <MainHeader 
               title="CUSTOMIZED PACKAGE" 
               navigation={this.props.navigation}/>
@@ -86,6 +109,7 @@ export default class CustomProductScreen extends Component {
                   style={{flex: 0.1, width: '100%'}}>
                     <Button
                     buttonStyle={styles.button_fullWidth}
+                    onPress={() => this.openShoppingCart()}
                     title="PURCHASE"/>
                   </View>
                 </View>
