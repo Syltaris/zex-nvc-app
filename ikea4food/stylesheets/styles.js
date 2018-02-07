@@ -68,7 +68,8 @@ export default styles = StyleSheet.create({
     container_recipes: {
       flex: 1,
       width: '100%',
-      height: '100%',
+      padding: 20,
+      backgroundColor: Colors.SECONDARY,
       alignItems: 'center',
       backgroundColor: Colors.BACKGROUND,
     },
