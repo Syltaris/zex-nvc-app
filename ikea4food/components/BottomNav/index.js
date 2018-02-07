@@ -39,10 +39,10 @@ export default class BottomNav extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity 
                 style={styles.container_bottomNavButtons}
-                onPress={() => {this.props.navigation.navigate('ProfileScreen')}}>
+                onPress={() => {this.props.navigation.navigate('RecipesScreen')}}>
                     <Icon
-                    name="face-profile"
-                    type="material-community"
+                    name="book"
+                    type="entypo"
                     color={Colors.ICON_PRIMARY}/>
                 </TouchableOpacity>
             </View>

@@ -11,6 +11,7 @@ import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import ProductScreen from './screens/ProductScreen';
 import CustomProductScreen from './screens/CustomProductScreen';
+import RecipesScreen from './screens/RecipesScreen';
 import SettingsScreen from './screens/SettingsScreen';
 
 import CustomDrawerComponent from './components/CustomDrawerComponent';
@@ -36,6 +37,12 @@ export default RootNavigator = DrawerNavigator({
   },
   CustomProductScreen: {
     screen: CustomProductScreen,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  RecipesScreen: {
+    screen: RecipesScreen,
     navigationOptions: {
       header: null,
     }

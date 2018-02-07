@@ -24,6 +24,10 @@ export default styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'right',
   },
+  text_recipesDescription: {
+    fontSize: 16,
+    marginLeft: 10,
+  },
   container: {
     flex: 1,
     width: '100%',
@@ -61,6 +65,13 @@ export default styles = StyleSheet.create({
       width: '100%',
       height: '100%',
     },
+    container_recipes: {
+      flex: 1,
+      width: '100%',
+      height: '100%',
+      alignItems: 'center',
+      backgroundColor: Colors.BACKGROUND,
+    },
   containerReverse: {
       flex: 1,
       width: '100%',
@@ -77,6 +88,10 @@ export default styles = StyleSheet.create({
       width: '100%',
       margin: 0,
     },
+  card_recipesItem: {
+    width: '90%',
+    justifyContent: 'center',
+  },
   drawer_top: {
     width: '100%',
     height: 150,
