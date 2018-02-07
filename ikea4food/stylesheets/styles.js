@@ -14,6 +14,11 @@ export default styles = StyleSheet.create({
     fontWeight: 'bold',
     margin: 10,
   },
+  text_shoppingCartItemName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
   text_shoppingCartItemPrice: {
     fontSize: 16,
     fontWeight: 'bold',

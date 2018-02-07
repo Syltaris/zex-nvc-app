@@ -58,6 +58,7 @@ export default class CustomProductScreen extends Component {
           <Slider
           key={key}
           step={0.1}
+          thumbTouchSize={{width: 60, height: 60}}
           value={this.state.product_composition[key]}
           onValueChange={(value) => {
             var updated_composition = this.state.product_composition;
@@ -82,7 +83,10 @@ export default class CustomProductScreen extends Component {
     return (
       <Card
       containerStyle={styles.card_shoppingCartItem}>
-        <Text>Your New Custom Meal</Text>
+        <Text
+        style={styles.text_shoppingCartItemName}>
+          Your New Custom Meal
+        </Text>
         {
           Object.keys(this.state.product_composition).map((key) => {
             return (
