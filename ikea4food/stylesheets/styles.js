@@ -54,6 +54,7 @@ export default styles = StyleSheet.create({
     },
     button_fullWidth: {
       width: '100%',
+      padding: 20,
       backgroundColor: Colors.SECONDARY,
       alignItems: 'center',
       justifyContent: 'center'
