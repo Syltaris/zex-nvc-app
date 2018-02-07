@@ -9,6 +9,16 @@ export const Colors = {
 }
 
 export default styles = StyleSheet.create({
+  text_header: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    margin: 10,
+  },
+  text_shoppingCartItemPrice: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'right',
+  },
   container: {
     flex: 1,
     width: '100%',
@@ -56,7 +66,12 @@ export default styles = StyleSheet.create({
   },
   card_shoppingCart: {
     width: '90%',
+    justifyContent: 'center',
   },
+    card_shoppingCartItem: {
+      width: '100%',
+      margin: 0,
+    },
   drawer_top: {
     width: '100%',
     height: 150,

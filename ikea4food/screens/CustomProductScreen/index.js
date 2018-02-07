@@ -52,7 +52,9 @@ export default class CustomProductScreen extends Component {
   populateSliders = () => {
     return Object.keys(this.state.product_composition).map((key) => {
       return(
-        <View key={key} style={{flex: 1, alignItems: 'stretch', justifyContent: 'center', width: '80%'}}>
+        <View 
+        key={key} 
+        style={{flex: 1, alignItems: 'stretch', justifyContent: 'center', width: '80%'}}>
           <Slider
           key={key}
           step={0.1}
@@ -68,6 +70,33 @@ export default class CustomProductScreen extends Component {
     });
   }
 
+  calculateCost = () => {
+    var totalCost = 0;
+    for(item in this.state.product_composition) {
+      totalCost += this.state.product_composition[item]*0.2;
+    }
+    return totalCost.toFixed(2);
+  }
+
+  populateShoppingCart = () => {
+    return (
+      <Card
+      containerStyle={styles.card_shoppingCartItem}>
+        <Text>Your New Custom Meal</Text>
+        {
+          Object.keys(this.state.product_composition).map((key) => {
+            return (
+              <Text key={key}>{key}: {this.state.product_composition[key].toFixed(1)}g</Text>
+            );
+          })
+        }
+        <Text
+        style={styles.text_shoppingCartItemPrice}>
+          Price: ${this.calculateCost()}
+        </Text>
+      </Card>
+    );
+  }
   openShoppingCart = () => {this.setState({showShoppingCart: true})}
   closeShoppingCart = () => {this.setState({showShoppingCart: false})}
 
@@ -82,11 +111,15 @@ export default class CustomProductScreen extends Component {
                 <View style={styles.container_shoppingCart}>
                   <Card
                     containerStyle={styles.card_shoppingCart}>
-                    <Text>
+                    <Text style={styles.text_header}>
                         Your Shoppping List
                     </Text>
-                    <Button 
-                    title="dumbass"
+                    <View style={{marginBottom: 10}}>
+                      {this.populateShoppingCart()}
+                    </View>
+                    <Button
+                    raised
+                    title="CHECKOUT"
                     onPress={() => this.closeShoppingCart()}/>
                   </Card>
                 </View>
