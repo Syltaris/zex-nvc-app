@@ -9,6 +9,8 @@ import {
     Card
 } from 'react-native-elements';
 
+import DataHelpers from '../../models/schemas';
+
 import MainHeader from '../../components/MainHeader';
 import BottomNav from '../../components/BottomNav';
 import styles from '../../stylesheets/styles';
@@ -16,31 +18,9 @@ import styles from '../../stylesheets/styles';
 export default class RecipesScreen extends Component {
     constructor() {
         super();
+        let userData = DataHelpers.getUserData();
         this.state = {
-            subscriptions : [
-                {
-                    key: 1,
-                    name: 'Perfected Strike',
-                    image_uri: require('../../res/img/salad1.jpg'),
-                    description: 'Tasty poison.',
-                    next_arrival_time: 'Sometime like never'
-                },
-                {
-                    key: 2,
-                    name: 'uhuhuhuhuh',
-                    image_uri: {uri: 'https://source.unsplash.com/collection/345760/200x100'}, 
-                },
-                {
-                    key: 3,
-                    name: 'uhuhuhuhuh',
-                    image_uri: {uri: 'https://source.unsplash.com/collection/345760/201x100'},
-                },
-                {
-                    key: 4,
-                    name: 'uhuhuhuhuh',
-                    image_uri: {uri: 'https://source.unsplash.com/collection/345760/200x101'},
-                }
-            ]
+            subscriptions : userData.subscriptions || false
         }
     }
 

@@ -17,7 +17,6 @@ import styles from '../../stylesheets/styles';
 export default class ProductScreen extends Component {
     constructor() {
         super();
-
         let products = DataHelpers.getAllProducts();
         this.state = {
             products: products

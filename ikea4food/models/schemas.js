@@ -92,7 +92,7 @@ export default DataHelpers = {
         return database.objects('Product');
     },
     getUserData() {
-        return database.objects('User');
+        return database.objects('User')[0];
     },
 
     insertUser(user) {
@@ -112,9 +112,11 @@ export default DataHelpers = {
 }
 
 //reset db data
-// database.delete(database.objects('User'));
-// database.delete(database.objects('Product'));
-
+database.write(() => {
+    database.delete(database.objects('User'));
+    database.delete(database.objects('Profile'));
+    database.delete(database.objects('Product'));
+})
 
 //populate Products
 DataHelpers.insertProduct(new ProductModel('McCreamy', 
@@ -153,4 +155,4 @@ DataHelpers.insertUser(new UserModel(
             zip: '555666'
         }
     }
-))
+));
