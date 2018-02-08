@@ -13,9 +13,7 @@ const AddressSchema = {
 }
 const ProfileSchema = {
     name: 'Profile',
-    primaryKey: 'id',
     properties: {
-        id: 'string',
         name: 'string',
         age: 'int',
         email: 'string',
@@ -67,8 +65,9 @@ const PackageSchema = {
 }
 const UserSchema = {
     name: 'User',
+    primaryKey: 'id',
     properties: {
-        key: 'string',
+        id: 'string',
         profile: 'Profile',
         subscriptions: 'Package[]',
         shoppingCart: 'Product[]'
@@ -96,9 +95,12 @@ export default DataHelpers = {
         return database.objects('User');
     },
 
-    insertUser() {
-        if (database.objects('User').filtered("title = '" + todo.title + "'").length) return;
+    insertUser(user) {
+        if(database.objects('Profile').filtered("name = '" + user.profile.name + "'").length) return;
 
+        database.write(() => {
+            database.create('User', user);
+        })
     },
     insertProduct(product) {
         if(database.objects('Product').filtered("name = '" + product.name + "'").length) return;
@@ -108,6 +110,11 @@ export default DataHelpers = {
         })
     }
 }
+
+//reset db data
+// database.delete(database.objects('User'));
+// database.delete(database.objects('Product'));
+
 
 //populate Products
 DataHelpers.insertProduct(new ProductModel('McCreamy', 
@@ -125,39 +132,25 @@ DataHelpers.insertProduct(new ProductModel('McCreamiest',
 'This is the loveliest package of greens.', 
 '$34.99',
 {}));
-DataHelpers.insertProduct(new ProductModel('McCocaine', 
-'https://source.unsplash.com/collection/345760/801x101', 
-'This is a ... nose candy.', 
-'$44.99',
-{}));
+DataHelpers.insertProduct(new ProductModel(
+    'McCocaine', 
+    'https://source.unsplash.com/collection/345760/801x101', 
+    'This is a ... nose candy.', 
+    '$44.99',
+    {}
+));
 
-[
+//populate User
+DataHelpers.insertUser(new UserModel(
     {
-        key: 1,
-        name: 'McCreamy',
-        image_uri: {uri: 'https://source.unsplash.com/collection/345760/800x100'},
-        description: 'This is a lovely package of greens.',
-        price: '$4.99'
-    },
-    {
-        key: 2,
-        name: 'McCreamier',
-        image_uri: {uri: 'https://source.unsplash.com/collection/345760/800x101'},
-        description: 'This is a lovely package of greens.',
-        price: '$4.99'
-    },
-    {
-        key: 3,
-        name: 'McCreamiest',
-        image_uri: {uri: 'https://source.unsplash.com/collection/345760/801x100'},
-        description: 'This is a lovely package of greens.',
-        price: '$4.99'
-    },
-    {
-        key: 4,
-        name: 'Cocaine',
-        image_uri: {uri: 'https://source.unsplash.com/collection/345760/801x101'},
-        description: 'This is a lovely package of greens.',
-        price: '$4.99'
+        name: 'John Doe',
+        age: 23,
+        email: 'greens@gmail.com',
+        contact_number: '555-555-5555',
+        address : {
+            street: 'Amazing 21st Street',
+            state: 'Beautiful State',
+            zip: '555666'
+        }
     }
-]
+))
