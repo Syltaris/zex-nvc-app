@@ -1,7 +1,7 @@
 import uuid from 'react-native-uuid';
 
 export default class UserModel {
-    constructor() {
+    constructor(profile) {
         this.id = uuid.v4();
         this.profile = {
             name: name,
