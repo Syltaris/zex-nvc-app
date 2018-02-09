@@ -2,6 +2,7 @@ import Realm from 'realm';
 
 import UserModel from './User';
 import ProductModel from './Product';
+import PackageModel from './Package';
 
 const AddressSchema = {
     name: 'Address',
@@ -69,8 +70,8 @@ const UserSchema = {
     properties: {
         id: 'string',
         profile: 'Profile',
-        subscriptions: 'Package[]',
-        shoppingCart: 'Product[]'
+        subscriptions: {type: 'Package[]', default: []},
+        shoppingCart: {type: 'Product[]', default: []}
     },
 }
 
@@ -103,9 +104,14 @@ export default DataHelpers = {
             database.create('User', user);
         })
     },
-    updateUserSubscriptions(user, updatedSubscriptions) {
+    addSubscriptionItem(user, itemToAdd) {
         database.write(() => {
-            user.subscriptions = updatedSubscriptions;
+            user.subscriptions.push(new PackageModel(itemToAdd, new Date()));
+        })
+    },
+    addShoppingCartItem(user, itemToAdd) {
+        database.write(() => {
+            user.shoppingCart.push(new ProductModel(itemToAdd.name, itemToAdd.image_uri, itemToAdd.description, itemToAdd.price, itemToAdd.product_composition));
         })
     },
     insertProduct(product) {
