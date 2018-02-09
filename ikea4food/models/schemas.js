@@ -98,7 +98,7 @@ export default DataHelpers = {
     },
 
     insertUser(user) {
-        if(database.objects('Profile').filtered("name = '" + user.profile.name + "'").length) return;
+        if(database.objects('Profile').filtered("name == $0",user.profile.name).length) return;
 
         database.write(() => {
             database.create('User', user);
@@ -111,7 +111,7 @@ export default DataHelpers = {
     },
     addShoppingCartItem(user, itemToAdd) {
         database.write(() => {
-            user.shoppingCart.push(new ProductModel(itemToAdd.name, itemToAdd.image_uri, itemToAdd.description, itemToAdd.price, itemToAdd.product_composition));
+            user.shoppingCart.push(itemToAdd);
         })
     },
     clearShoppingCart(user) {
@@ -120,7 +120,7 @@ export default DataHelpers = {
         })
     },
     insertProduct(product) {
-        if(database.objects('Product').filtered("name = '" + product.name + "'").length) return;
+        if(database.objects('Product').filtered("name == $0", product.name).length) return;
 
         database.write(() => {
             database.create('Product', product);

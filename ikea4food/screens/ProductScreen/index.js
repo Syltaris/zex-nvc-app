@@ -27,7 +27,7 @@ export default class ProductScreen extends Component {
             selectedProduct: null,
             user: user,
             products: products,
-            shoppingCart: user.shoppingCart,
+            shoppingCart: user.shoppingCart || [],
         }
     }
 
