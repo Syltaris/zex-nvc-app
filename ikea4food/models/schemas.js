@@ -114,6 +114,11 @@ export default DataHelpers = {
             user.shoppingCart.push(new ProductModel(itemToAdd.name, itemToAdd.image_uri, itemToAdd.description, itemToAdd.price, itemToAdd.product_composition));
         })
     },
+    clearShoppingCart() {
+        database.write(() => {
+            user.shoppingCart = [];
+        })
+    },
     insertProduct(product) {
         if(database.objects('Product').filtered("name = '" + product.name + "'").length) return;
 
@@ -146,12 +151,11 @@ DataHelpers.insertProduct(new ProductModel('McCreamiest',
 'This is the loveliest package of greens.', 
 '$34.99',
 {}));
-DataHelpers.insertProduct(new ProductModel(
-    'McCocaine', 
-    'https://source.unsplash.com/collection/345760/801x101', 
-    'This is a ... nose candy.', 
-    '$44.99',
-    {}
+DataHelpers.insertProduct(new ProductModel('McCocaine', 
+'https://source.unsplash.com/collection/345760/801x101', 
+'This is a ... nose candy.', 
+'$44.99',
+{}
 ));
 
 //populate User
