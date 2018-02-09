@@ -58,6 +58,7 @@ export default class RecipesScreen extends Component {
                     <FlatList
                     showsVerticalScrollIndicator={false}
                     data={this.state.subscriptions}
+                    keyExtractor={(item) => item.id}
                     renderItem={this._renderRecipeCard} />
                   </View>
                   <BottomNav navigation={this.props.navigation} />

@@ -26,19 +26,20 @@ export default class ProfileScreen extends Component {
         }
     }
 
-    _renderSubscriptionCard = ({item, seperators}) => (
-        <TouchableOpacity
-        key={item.id}>
-            <Card 
-            key={item.id} 
-            image={{uri: item.product.image_uri}}
-            featuredSubtitle={item.product.name}
-            containerStyle={{width: 200}}>
-                <Text>{item.product.description}</Text>
-                <Text>Next Arrival: {item.next_arrival_time.toLocaleString()}</Text>
-            </Card>
-        </TouchableOpacity>
-    );
+    _renderSubscriptionCard = ({item, seperator}) => {
+        return(
+            <TouchableOpacity
+            key={item.id}>
+                <Card 
+                image={{uri: item.product.image_uri}}
+                featuredSubtitle={item.product.name}
+                containerStyle={{width: 200}}>
+                    <Text key={item.id}>{item.product.description}</Text>
+                    <Text key={item.id}>Next Arrival: {item.next_arrival_time.toLocaleString()}</Text>
+                </Card>
+            </TouchableOpacity>
+        );
+    };
 
     render() {
       return (
@@ -69,9 +70,9 @@ export default class ProfileScreen extends Component {
                                 <Text>Subscriptions: </Text>
                                 <FlatList
                                 horizontal
+                                keyExtractor={(item) => item.id}
                                 showsHorizontalScrollIndicator={false}
                                 data={this.state.subscriptions}
-                                keyExtractor={(item) => item.id}
                                 renderItem={this._renderSubscriptionCard} />
                             </Card>
                         </View>
