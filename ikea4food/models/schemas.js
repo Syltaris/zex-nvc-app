@@ -114,7 +114,7 @@ export default DataHelpers = {
             user.shoppingCart.push(new ProductModel(itemToAdd.name, itemToAdd.image_uri, itemToAdd.description, itemToAdd.price, itemToAdd.product_composition));
         })
     },
-    clearShoppingCart() {
+    clearShoppingCart(user) {
         database.write(() => {
             user.shoppingCart = [];
         })
