@@ -84,7 +84,8 @@ let database = new Realm({
         ProductSchema,
         PackageSchema, 
         UserSchema,
-    ]
+    ],
+    deleteRealmIfMigrationNeeded: true,
 });
 
 export default DataHelpers = {
@@ -100,6 +101,11 @@ export default DataHelpers = {
 
         database.write(() => {
             database.create('User', user);
+        })
+    },
+    updateUserSubscriptions(user, updatedSubscriptions) {
+        database.write(() => {
+            user.subscriptions = updatedSubscriptions;
         })
     },
     insertProduct(product) {
