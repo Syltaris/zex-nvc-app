@@ -3,10 +3,13 @@ import {
   Text,
   View,
   Image,
-  FlatList
+  Modal,
+  FlatList,
+  TouchableOpacity
 } from 'react-native';
 import {
-    Card
+    Card,
+    Button
 } from 'react-native-elements';
 
 import DataHelpers from '../../models/schemas';
@@ -20,36 +23,66 @@ export default class RecipesScreen extends Component {
         super();
         let userData = DataHelpers.getUserData();
         this.state = {
-            subscriptions : userData.subscriptions || false
+            showRecipe: false,
+            selectedRecipeInstructions: [],
+            subscriptions : userData.subscriptions || []
         }
     }
 
     _renderRecipeCard = ({item, seperators}) => (
-        <View>
+        <TouchableOpacity
+        onPress={() => this.showRecipe(item.product.product_composition.recipe)}>
             <Card 
-            key={item.key} 
-            featuredSubtitle={item.name}
+            key={item.product.key} 
+            featuredSubtitle={item.product.name}
             containerStyle={{width: 400}}>
                 <View
                 style={{flex:1, flexDirection: 'row'}}>
                     <Image
                     style={{width: 80, height: 80, borderRadius: 80}}
-                    source={item.image_uri}/>
+                    source={{uri: item.product.image_uri}}/>
                     <View>
                         <Text
                         style={styles.text_header}>
-                            {item.name}
+                            {item.product.name}
                         </Text>
-                        <Text style={styles.text_recipesDescription}>{item.description}</Text>
+                        <Text style={styles.text_recipesDescription}>{item.product.description}</Text>
                     </View>
                 </View> 
             </Card>
-        </View>
+        </TouchableOpacity>
     );
+
+    showRecipe = (recipe) => this.setState({showRecipe: true, selectedRecipeInstructions: recipe.instructions})
+    hideRecipe = () => this.setState({showRecipe: false})
+
+    _loadRecipe() {
+        return(this.state.selectedRecipeInstructions.map((instruction) => {
+            return(<Text>{instruction}</Text>);
+        }));
+    }
 
     render() {
       return (
             <View style={styles.container}>
+                <Modal
+                transparent
+                visible={this.state.showRecipe}
+                animationType={'fade'}
+                onRequestClose={() => this.hideRecipe()}>
+                <View style={styles.modal_transparentBlack}>
+                    <View style={styles.container_recipeList}>
+                        <Card
+                        containerStyle={styles.card_shoppingCart}>
+                            {this._loadRecipe()}
+                            <Button
+                            raised
+                            title="CLOSE"
+                            onPress={() => this.hideRecipe()}/>
+                        </Card>
+                    </View>
+                </View>
+                </Modal>
                 <MainHeader 
                 title="RECIPES"
                 navigation={this.props.navigation} />

@@ -28,14 +28,13 @@ export default class ProfileScreen extends Component {
 
     _renderSubscriptionCard = ({item, seperator}) => {
         return(
-            <TouchableOpacity
-            key={item.id}>
-                <Card 
+            <TouchableOpacity>
+                <Card
                 image={{uri: item.product.image_uri}}
                 featuredSubtitle={item.product.name}
                 containerStyle={{width: 200}}>
-                    <Text key={item.id}>{item.product.description}</Text>
-                    <Text key={item.id}>Next Arrival: {item.next_arrival_time.toLocaleString()}</Text>
+                    <Text>{item.product.description}</Text>
+                    <Text>Next Arrival: {item.next_arrival_time.toLocaleString()}</Text>
                 </Card>
             </TouchableOpacity>
         );

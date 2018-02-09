@@ -6,6 +6,7 @@ export const Colors = {
   'BACKGROUND' : '#F5FCFF',
   'FONT_GREY' : '#333333',
   'ICON_PRIMARY' : "#FFF",
+  'TRANSPARENT_BLACK': "rgba(0,0,0,0.5)"
 }
 
 export default styles = StyleSheet.create({
@@ -92,6 +93,14 @@ export default styles = StyleSheet.create({
   card_recipesItem: {
     width: '90%',
     justifyContent: 'center',
+  },
+  modal_transparentBlack: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.TRANSPARENT_BLACK,
   },
   drawer_top: {
     width: '100%',

@@ -93,35 +93,34 @@ export default class ProductScreen extends Component {
                 animationType={'slide'}
                 onRequestClose={() => this.closeShoppingCart()}>
                     <View style={styles.container_shoppingCart}>
-                    <Card
-                        containerStyle={styles.card_shoppingCart}>
-                        <Text style={styles.text_header}>
-                            Your Shoppping List
-                        </Text>
-                        <View style={{marginBottom: 10}}>
-                            {this.populateShoppingCart()}
-                        </View>
-                        <Button
-                        raised
-                        title="CHECKOUT"
-                        onPress={() => this.checkoutShoppingCart()}/>
-                    </Card>
+                        <Card
+                            containerStyle={styles.card_shoppingCart}>
+                            <Text style={styles.text_header}>
+                                Your Shoppping List
+                            </Text>
+                            <View style={{marginBottom: 10}}>
+                                {this.populateShoppingCart()}
+                            </View>
+                            <Button
+                            raised
+                            title="CHECKOUT"
+                            onPress={() => this.checkoutShoppingCart()}/>
+                        </Card>
                     </View>
                 </Modal>
-
                 <MainHeader 
                 title="PRODUCTS"
                 navigation={this.props.navigation} />
-                <View style={styles.containerReverse}>
-                    <View style={styles.container}>
-                        <FlatList
-                        showsVerticalScrollIndicator={false}
-                        data={this.state.products}
-                        keyExtractor={(item) => item.id}
-                        renderItem={this._renderProductCard} />
+                    <View style={styles.containerReverse}>
+                        <View style={styles.container}>
+                            <FlatList
+                            showsVerticalScrollIndicator={false}
+                            data={this.state.products}
+                            keyExtractor={(item) => item.id}
+                            renderItem={this._renderProductCard} />
+                        </View>
+                        <BottomNav navigation={this.props.navigation} />
                     </View>
-                    <BottomNav navigation={this.props.navigation} />
-                </View>
             </View>
       );
     }
