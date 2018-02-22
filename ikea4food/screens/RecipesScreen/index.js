@@ -59,8 +59,8 @@ export default class RecipesScreen extends Component {
     hideRecipe = () => this.setState({showRecipe: false})
 
     _loadRecipe() {
-        return(this.state.selectedRecipeInstructions.map((instruction) => {
-            return(<Text>{instruction}</Text>);
+        return(this.state.selectedRecipeInstructions.map((instruction, index) => {
+            return(<Text key={index}>{instruction}</Text>);
         }));
     }
 
