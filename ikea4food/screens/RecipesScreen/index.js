@@ -29,29 +29,31 @@ export default class RecipesScreen extends Component {
         }
     }
 
-    _renderRecipeCard = ({item, seperators}) => (
-        <TouchableOpacity
-        onPress={() => this.showRecipe(item.product.product_composition.recipe)}>
-            <Card 
-            key={item.product.key} 
-            featuredSubtitle={item.product.name}
-            containerStyle={{width: 400}}>
-                <View
-                style={{flex:1, flexDirection: 'row'}}>
-                    <Image
-                    style={{width: 80, height: 80, borderRadius: 80}}
-                    source={{uri: item.product.image_uri}}/>
-                    <View>
-                        <Text
-                        style={styles.text_header}>
-                            {item.product.name}
-                        </Text>
-                        <Text style={styles.text_recipesDescription}>{item.product.description}</Text>
-                    </View>
-                </View> 
-            </Card>
-        </TouchableOpacity>
-    );
+    _renderRecipeCard = ({item, seperators}) => {
+        return(
+            <TouchableOpacity
+            onPress={() => this.showRecipe(item.product.product_composition.recipe)}>
+                <Card 
+                key={item.product.key} 
+                featuredSubtitle={item.product.name}
+                containerStyle={{width: 400}}>
+                    <View
+                    style={{flex:1, flexDirection: 'row'}}>
+                        <Image
+                        style={{width: 80, height: 80, borderRadius: 80}}
+                        source={{uri: item.product.image_uri}}/>
+                        <View>
+                            <Text
+                            style={styles.text_header}>
+                                {item.product.name}
+                            </Text>
+                            <Text style={styles.text_recipesDescription}>{item.product.description}</Text>
+                        </View>
+                    </View> 
+                </Card>
+            </TouchableOpacity>
+        );
+    };
 
     showRecipe = (recipe) => this.setState({showRecipe: true, selectedRecipeInstructions: recipe.instructions})
     hideRecipe = () => this.setState({showRecipe: false})
@@ -70,32 +72,32 @@ export default class RecipesScreen extends Component {
                 visible={this.state.showRecipe}
                 animationType={'fade'}
                 onRequestClose={() => this.hideRecipe()}>
-                <View style={styles.modal_transparentBlack}>
-                    <View style={styles.container_recipeList}>
-                        <Card
-                        containerStyle={styles.card_shoppingCart}>
-                            {this._loadRecipe()}
-                            <Button
-                            raised
-                            title="CLOSE"
-                            onPress={() => this.hideRecipe()}/>
-                        </Card>
+                    <View style={styles.modal_transparentBlack}>
+                        <View style={styles.container_recipeList}>
+                            <Card
+                            containerStyle={styles.card_shoppingCart}>
+                                {this._loadRecipe()}
+                                <Button
+                                raised
+                                title="CLOSE"
+                                onPress={() => this.hideRecipe()}/>
+                            </Card>
+                        </View>
                     </View>
-                </View>
                 </Modal>
                 <MainHeader 
                 title="RECIPES"
                 navigation={this.props.navigation} />
-                <View style={styles.containerReverse}>
-                  <View style={styles.container_recipes}>
-                    <FlatList
-                    showsVerticalScrollIndicator={false}
-                    data={this.state.subscriptions}
-                    keyExtractor={(item) => item.id}
-                    renderItem={this._renderRecipeCard} />
-                  </View>
-                  <BottomNav navigation={this.props.navigation} />
-                </View>
+                    <View style={styles.containerReverse}>
+                        <View style={styles.container_recipes}>
+                            <FlatList
+                            showsVerticalScrollIndicator={false}
+                            data={this.state.subscriptions}
+                            keyExtractor={(item) => item.product.id}
+                            renderItem={this._renderRecipeCard} />
+                        </View>
+                        <BottomNav navigation={this.props.navigation} />
+                    </View>
             </View>
       );
     }

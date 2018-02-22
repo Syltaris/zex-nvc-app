@@ -30,6 +30,7 @@ export default class ProfileScreen extends Component {
         return(
             <TouchableOpacity>
                 <Card
+                key={item.id}
                 image={{uri: item.product.image_uri}}
                 featuredSubtitle={item.product.name}
                 containerStyle={{width: 200}}>
@@ -69,7 +70,7 @@ export default class ProfileScreen extends Component {
                                 <Text>Subscriptions: </Text>
                                 <FlatList
                                 horizontal
-                                keyExtractor={(item) => item.id}
+                                keyExtractor={(item) => item.product.id}
                                 showsHorizontalScrollIndicator={false}
                                 data={this.state.subscriptions}
                                 renderItem={this._renderSubscriptionCard} />
